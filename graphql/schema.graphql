@@ -1,0 +1,36 @@
+"A datetime string with format `Y-m-d H:i:s`, e.g. `2018-05-23 13:43:32`."
+scalar DateTime @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
+
+"Indicates what fields are available at the top level of a query operation."
+type Query {
+  "List notes, optionally filtered by priority."
+  notes(priority: Priority @eq): [Note!]! @all(model: "App\\Models\\Note")
+  "Fetch a single note by id."
+  note(id: ID! @eq): Note @find(model: "App\\Models\\Note")
+}
+
+type Note {
+  id: ID!
+  title: String!
+  content: String!
+  priority: Priority!
+  created_at: DateTime!
+  updated_at: DateTime!
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+input NoteInput {
+  title: String!
+  content: String!
+  priority: Priority!
+}
+
+type Mutation {
+  createNote(input: NoteInput! @spread): Note! @create(model: "App\\Models\\Note")
+  updateNote(id: ID!, input: NoteInput! @spread): Note! @update(model: "App\\Models\\Note")
+}
