@@ -51,32 +51,32 @@
             "@php artisan migrate --force"
         ],
         "docker:up": [
-            "docker compose -f ../docker-compose.yml up -d"
+            "docker compose up -d"
         ],
         "docker:down": [
-            "docker compose -f ../docker-compose.yml down"
+            "docker compose down"
         ],
         "docker:restart": [
-            "docker compose -f ../docker-compose.yml restart app"
+            "docker compose restart app"
         ],
         "docker:rebuild": [
-            "docker compose -f ../docker-compose.yml build app",
-            "docker compose -f ../docker-compose.yml up -d --force-recreate app"
+            "docker compose build app",
+            "docker compose up -d --force-recreate app"
         ],
         "docker:app:install": [
-            "docker compose -f ../docker-compose.yml exec app bash -lc 'composer install'"
+            "docker compose exec app bash -lc 'composer install'"
         ],
         "docker:app:key": [
-            "docker compose -f ../docker-compose.yml exec app php artisan key:generate"
+            "docker compose exec app php artisan key:generate"
         ],
         "docker:app:migrate": [
-            "docker compose -f ../docker-compose.yml exec app php artisan migrate --force"
+            "docker compose exec app php artisan migrate --force"
         ],
         "docker:app:cache:clear": [
-            "docker compose -f ../docker-compose.yml exec app php artisan optimize:clear"
+            "docker compose exec app php artisan optimize:clear"
         ],
         "docker:logs": [
-            "docker compose -f ../docker-compose.yml logs -f app"
+            "docker compose logs -f app"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

@@ -33,4 +33,5 @@ input NoteInput {
 type Mutation {
   createNote(input: NoteInput! @spread): Note! @create(model: "App\\Models\\Note")
   updateNote(id: ID!, input: NoteInput! @spread): Note! @update(model: "App\\Models\\Note")
+  deleteNote(id: ID! @eq): Note @delete(model: "App\\Models\\Note")
 }
