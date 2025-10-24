@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+cd "$(dirname "$0")"
+
 # Notes API local setup (SQLite) and serve helper
 # Usage: ./run-local.sh
 
@@ -36,4 +38,4 @@ mkdir -p database
 composer migrate
 
 # 2) serve
-composer serve
+php artisan serve --host=127.0.0.1 --port=8000
